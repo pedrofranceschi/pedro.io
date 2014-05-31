@@ -58,7 +58,7 @@ var initialize = function() {
 				originY: startY + (j * SQUARE_SIZE),
 				x: startX + (i * SQUARE_SIZE),
 				y: startY + (j * SQUARE_SIZE),
-				color: "rgba(0,100,0,1)"
+				color: "rgba(0,0,100,1)"
 			});
 		}
 	}
@@ -68,7 +68,7 @@ var loadLogo = function() {
 	for(var i = 0; i < squares.length; i++) {
 		for(var j = 0; j < logoPixels.length; j++) {
 			if(squares[i].indexX == logoPixels[j].x && squares[i].indexY == logoPixels[j].y) {
-				squares[i].color = "rgba(200,200,200,1)";
+				squares[i].color = "rgba(150,150,150,1)";
 			}
 		}
 	}
@@ -135,4 +135,4 @@ window.onload = function() {
 	initialize();
 	loadLogo();
 	setInterval(step, 5);
-}
+};
