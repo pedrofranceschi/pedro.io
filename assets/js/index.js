@@ -38,7 +38,7 @@ var snakeFoodSquareIndex = -1;
 var snakeInterval = null;
 
 var render = function() {
-	a.fillStyle = "#333";
+	a.fillStyle = "#222";
 	a.fillRect(0, 0, w, h);
 
 	a.save();
