@@ -32,6 +32,7 @@ var mouse = {
 };
 
 var isRunningSnake = false;
+var isEndingSnake = false;
 var snakeMovement = 'right';
 var snakeBodySquareIndexes = new Array();
 var snakeFoodSquareIndex = -1;
@@ -172,6 +173,7 @@ var endSnake = function() {
 
 	var isBodyWhite	= true;
 	var flashesCount = 0;
+	isEndingSnake = true;
 
 	var flashBody = function() {
 		for(var i = 0; i < snakeBodySquareIndexes.length; i++) {
@@ -187,11 +189,12 @@ var endSnake = function() {
 				isBodyWhite = !isBodyWhite;
 				flashBody();
 			} else {
+				isEndingSnake = false;
 				snakeBodySquareIndexes = new Array();
 				clearPixels();
 				loadLogo();
 			}
-		}, 75);
+		}, 50);
 	};
 
 	flashBody();
@@ -250,12 +253,14 @@ var moveSnake = function() {
 };
 
 var startSnake = function() {
-	snakeMovement = 'right';
+	if(isEndingSnake) return;
+
+	snakeMovement = 'up';
 	isRunningSnake = true;
 
 	// Set snake body
-	for(var i = 10; i >= 5; i--) {
-		snakeBodySquareIndexes.push(squareIndexForPixel(i, Math.round(SQUARES_Y_COUNT/2)));
+	for(var i = 18; i <= 26; i++) {
+		snakeBodySquareIndexes.push(squareIndexForPixel(69, i));
 	}
 
 	insertSnakeFood();
